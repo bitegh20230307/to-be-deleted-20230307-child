@@ -1,0 +1,5 @@
+https://stackoverflow.com/questions/64407333/using-github-actions-to-automatically-update-the-repos-submodules
+Suggests using curl call from submodule (child)
+
+
+https://github.com/marketplace/actions/github-action-submodule-updates

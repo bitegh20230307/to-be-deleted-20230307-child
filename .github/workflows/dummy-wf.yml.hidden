@@ -1,0 +1,19 @@
+name: Something silly to mimic current repo
+
+on: [push]
+
+env:
+  SOME_ENV_VARIABLE: "SOME ENV VALUE"
+jobs:
+  silly_do_nothing_job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: 'Checkout code'
+        uses: actions/checkout@v3
+        # with:
+        #   submodules: recursive
+        #   token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: "Run Frontend Participant Build."
+        # working-directory: terraform/initech.alethium.health/base
+        run: echo $SOME_ENV_VARIABLE

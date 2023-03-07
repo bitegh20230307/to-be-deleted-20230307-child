@@ -1,0 +1,40 @@
+#repository_dispatch can only read from the default branch (main)
+#https://stackoverflow.com/questions/68147899/whats-is-the-difference-between-repository-dispatch-and-workflow-dispatch-in-git 
+
+#For example, you can configure your workflow to run when a push is made to the default branch of your repository, when a release is created, or when an issue is opened.
+#https://docs.github.com/en/actions/using-workflows/triggering-a-workflow#about-workflow-triggers:~:text=For%20example%2C%20you%20can%20configure%20your%20workflow%20to%20run%20when%20a%20push%20is%20made%20to%20the%20default%20branch%20of%20your%20repository%2C%20when%20a%20release%20is%20created%2C%20or%20when%20an%20issue%20is%20opened.
+
+
+name: 'Submodule Notify Parent'
+
+#PARENT_CHILD_SYNC_TOKEN is a security token variable 
+# that have 'Read-Write' access to the parent repository, 
+# and 'Read' access to submodule repositories.
+
+on:
+  push:
+    branches:
+      - main    
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  notify_parent:
+    name: 'Submodule Notify Parent'
+    runs-on: ubuntu-latest
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Github REST API Call
+      env:
+        PARENT_CHILD_SYNC_TOKEN_SECRET: ${{ secrets.PARENT_CHILD_SYNC_TOKEN_SECRET }}
+        PARENT_REPO: terary/to-be-deleted-20230303-gh-action-parent
+        PARENT_BRANCH: child-update-branch-rc0.1
+        WORKFLOW_ID: listen_submodule_merge #<9999999>
+      run: |
+        curl -fL --retry 3 -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ env.PARENT_CHILD_SYNC_TOKEN_SECRET }}" https://api.github.com/repos/${{ env.PARENT_REPO }}/actions/workflows/${{ env.WORKFLOW_ID }}/dispatches -d '{"ref":"${{ env.PARENT_BRANCH }}"}'
