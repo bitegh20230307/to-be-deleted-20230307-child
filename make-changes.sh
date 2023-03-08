@@ -8,3 +8,4 @@ echo $DATE>>log.txt
 git add .
 git commit -m "$NOW commit message goes here (debug)"
 git push --set-upstream origin $NOW
+git checkout main
