@@ -23,5 +23,5 @@ jobs:
           git submodule update --recursive --remote
           git add .
           git status
-          git commit -m "Update Submodules (gh Actions)"
+          git commit -am "Update Submodules (gh Actions)"
           git push
