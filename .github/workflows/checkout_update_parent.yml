@@ -19,14 +19,14 @@ jobs:
       - run: |
           tree -L 1
           date > generated.txt
-          echo 'Run from GH Actions' >> generated.txt
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git checkout -b ${{ env.local_branch_name }}
-#          git branch rc0.11
-          git submodule update --init --recursive
-          git submodule update --recursive --remote
-          git add -A
-          git status
-          git commit -am "Update Submodules (gh Actions)"
-          git push
+#           echo 'Run from GH Actions' >> generated.txt
+#           git config user.name github-actions
+#           git config user.email github-actions@github.com
+#           git checkout -b 202303081611
+# #          git branch rc0.11
+#           git submodule update --init --recursive
+#           git submodule update --recursive --remote
+#           git add -A
+#           git status
+#           git commit -am "Update Submodules (gh Actions)"
+#           git push
