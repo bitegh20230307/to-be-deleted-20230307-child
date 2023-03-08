@@ -14,6 +14,7 @@ jobs:
           repository: bitegh20230307/to-be-deleted-20230307-parent
           token: ${{ secrets.BITE_GH_20230307 }}
       - run: |
+          tree -L 1
           date > generated.txt
           echo 'Run from GH Actions' >> generated.txt
           git config user.name github-actions

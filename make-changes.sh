@@ -2,6 +2,8 @@
 
 NOW=`date +%s`
 DATE=`date`
+git checkout main
+git pull
 git checkout -b $NOW
 echo "NOW IS: $NOW, TODAY IS: $DATE"
 echo $DATE>>log.txt
