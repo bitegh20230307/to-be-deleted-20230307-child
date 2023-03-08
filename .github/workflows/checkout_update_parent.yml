@@ -19,7 +19,7 @@ jobs:
           echo 'Run from GH Actions' >> generated.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git checkout main
+          git checkout rc0.11
           git submodule update --init --recursive
           git submodule update --recursive --remote
           git add .
