@@ -9,8 +9,8 @@ jobs:
   commit_date_in_generated:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    env: 
-      local_branch_name: "submodule_bump_$(date +%s)"
+    # env: 
+    #   local_branch_name: "submodule_bump_$(date +%s)"
     steps:
       - name: Check out my other private repo
         uses: actions/checkout@master
@@ -23,7 +23,7 @@ jobs:
           echo 'Run from GH Actions' >> generated.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git checkout -b ${{ env.local_branch_name }}
+          git checkout -b 202303081611
 #          git branch rc0.11
           git submodule update --init --recursive
           git submodule update --recursive --remote
