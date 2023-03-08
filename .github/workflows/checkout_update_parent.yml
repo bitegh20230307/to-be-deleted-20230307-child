@@ -14,14 +14,14 @@ jobs:
           repository: bitegh20230307/to-be-deleted-20230307-parent
           token: ${{ secrets.BITE_GH_20230307 }}
       - run: |
-          date > generated.txt
           tree -L 1
+          date > generated.txt
           echo 'Run from GH Actions' >> generated.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
           git submodule update --recursive --remote
-          git status
           git add .
+          git status
           git commit -m "Update Submodules (gh Actions)"
           git status
           git push
