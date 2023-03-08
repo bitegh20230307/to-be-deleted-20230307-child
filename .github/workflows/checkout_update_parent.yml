@@ -1,12 +1,12 @@
 name: Attempt to checkout parent
-on: push
-# on:
-#   pull_request:
-#     types:
-#       - closed
+#on: push
+on:
+  pull_request:
+    types:
+      - closed
 jobs:
   commit_date_in_generated:
-#    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     env: 
       local_branch_name: "submodule_bump_$(date +%s)"
