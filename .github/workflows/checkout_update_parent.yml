@@ -1,28 +1,24 @@
 name: Attempt to checkout parent
-on:
-  pull_request:
-    types:
-      - closed
+on: 
+  push:
 jobs:
-  if_merged:
-    if: github.event.pull_request.merged == true
-#  commit_date_in_generated:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Check out my other private repo
-          uses: actions/checkout@master
-          with:
-            repository: bitegh20230307/to-be-deleted-20230307-parent
-            token: ${{ secrets.BITE_GH_20230307 }}
-        - run: |
-            date > generated.txt
-            echo 'Run from GH Actions' >> generated.txt
-            git config user.name github-actions
-            git config user.email github-actions@github.com
-            git submodule update --recursive --remote
-            git add .
-            git commit -m "Update Submodules (gh Actions)"
-            git push
+  commit_date_in_generated:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out my other private repo
+        uses: actions/checkout@master
+        with:
+          repository: bitegh20230307/to-be-deleted-20230307-parent
+          token: ${{ secrets.BITE_GH_20230307 }}
+      - run: |
+          date > generated.txt
+          echo 'Run from GH Actions' >> generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git submodule update --recursive --remote
+          git add .
+          git commit -m "Update Submodules (gh Actions)"
+          git push
 
 #       - name: Check out my other private repo
 #         uses: actions/checkout@master
