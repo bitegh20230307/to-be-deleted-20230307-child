@@ -23,7 +23,6 @@ jobs:
           git add .
           git status
           git commit -m "Update Submodules (gh Actions)"
-          git status
           git push
 
 #       - name: Check out my other private repo
