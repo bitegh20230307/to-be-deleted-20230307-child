@@ -8,8 +8,8 @@ jobs:
   commit_date_in_generated:
 #    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    # env: 
-    #   local_branch_name: "submodule_bump_$(date +%s)"
+    env: 
+      local_branch_name: "submodule_bump_$(date +%s)"
     steps:
       - name: Check out my other private repo
         uses: actions/checkout@master
