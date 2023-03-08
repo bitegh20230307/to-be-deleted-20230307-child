@@ -19,33 +19,9 @@ jobs:
           echo 'Run from GH Actions' >> generated.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
+          git checkout main
           git submodule update --recursive --remote
           git add .
           git status
           git commit -m "Update Submodules (gh Actions)"
           git push
-
-#       - name: Check out my other private repo
-#         uses: actions/checkout@master
-#         with:
-#           repository: bitegh20230307/to-be-deleted-20230307-public
-#           token: ${{ secrets.BITE_GH_20230307 }}
-# #       - run: |
-#           date > generated.txt
-#           git config user.name github-actions
-#           git config user.email github-actions@github.com
-# #          git submodule update --remote
-#           git add .
-#           git commit -m "generated"
-#           git push
-
-      # - uses: actions/checkout@v3
-      #   with:
-      #     token: ${{ secrets.BITE_GH_20230307 }}
-      # - run: |
-      #     date > generated.txt
-      #     git config user.name github-actions
-      #     git config user.email github-actions@github.com
-      #     git add .
-      #     git commit -m "generated"
-      #     git push
