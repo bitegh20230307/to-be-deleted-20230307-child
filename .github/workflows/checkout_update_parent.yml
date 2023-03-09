@@ -21,10 +21,10 @@ jobs:
           echo 'Run from GH Actions' >> generated.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git checkout -b ${{ submodule_branch_name }}
+          git checkout -b ${{ env.submodule_branch_name }}
           git submodule update --init --recursive
           git submodule update --recursive --remote
           git add .
           git status
           git commit -am "Update Submodules (gh Actions)"
-          git push --set-upstream origin ${{ submodule_branch_name }}
+          git push --set-upstream origin ${{ env.submodule_branch_name }}
