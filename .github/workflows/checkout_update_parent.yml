@@ -8,7 +8,7 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     env:
-      submodule_branch_name: bump_submodule_$(date +%s)
+      submodule_branch_name: bump_submodule_unique_identifier
     steps:
       - name: Check out my other private repo
         uses: actions/checkout@master
