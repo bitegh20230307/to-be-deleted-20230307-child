@@ -1,0 +1,19 @@
+name: Attempt to checkout parent
+on: push
+jobs:
+  commit_date_in_generated:
+    runs-on: ubuntu-latest
+    env:
+      submodule_branch_name: bump_submodule_$(date +%s)
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.BITE_GH_20230307 }}
+      - run: |
+          date > generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout -b ${{ env.submodule_branch_name }}
+          git add .
+          git commit -m "generated ${{ env.submodule_branch_name }}"
+          git push
