@@ -27,4 +27,4 @@ jobs:
           git add .
           git status
           git commit -am "Update Submodules (gh Actions)"
-          git push
+          git push  --set-upstream origin submodule_branch_name
