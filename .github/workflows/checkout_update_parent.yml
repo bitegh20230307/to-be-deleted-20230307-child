@@ -21,10 +21,11 @@ jobs:
           echo 'Run from GH Actions' >> generated.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git branch rc0.11
+          git checkout -b sm_bump_202303081832
           git submodule update --init --recursive
-          git submodule update --recursive --remote
-          git add .
-          git status
+          git submodule update --recursive --remote  # probably needs both of these
+          git add -A
           git commit -am "Update Submodules (gh Actions)"
-          git push
+          git push --set-upstream origin sm_bump_202303081832
+    
+    #Next need to add code to create push
