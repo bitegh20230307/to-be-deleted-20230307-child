@@ -8,7 +8,7 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     env:
-      submodule_branch_name: bump_submodule_$(date +%s)
+      submodule_branch_name: bump_submodule_unique_id
     steps:
       - name: Check out my other private repo
         uses: actions/checkout@master
@@ -27,4 +27,4 @@ jobs:
           git add .
           git status
           git commit -am "Update Submodules (gh Actions)"
-          git push --set-upstream origin ${{ env.submodule_branch_name }}
+          git push --set-upstream origin bump_submodule_unique_id
