@@ -1,4 +1,4 @@
-name: Attempt to checkout parent
+name: Update Submodules on Parent 
 on:
   pull_request:
     types:
